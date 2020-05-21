@@ -379,8 +379,12 @@ class DashboardComponent {
     fetchData() {
         this.dataService.fetchData()
             .subscribe(ch => {
-            this.cards = JSON.parse(ch);
-            console.log(this.cards);
+            if (ch) {
+                this.cards = JSON.parse(ch);
+            }
+            else {
+                console.log(ch);
+            }
         });
     }
     ngOnInit() {
@@ -435,7 +439,7 @@ class DataService {
         this.http = http;
     }
     fetchData() {
-        return this.http.get('/');
+        return this.http.get('/dashboard');
     }
 }
 DataService.ɵfac = function DataService_Factory(t) { return new (t || DataService)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"])); };

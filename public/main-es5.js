@@ -766,8 +766,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           var _this = this;
 
           this.dataService.fetchData().subscribe(function (ch) {
-            _this.cards = JSON.parse(ch);
-            console.log(_this.cards);
+            if (ch) {
+              _this.cards = JSON.parse(ch);
+            } else {
+              console.log(ch);
+            }
           });
         }
       }, {
@@ -884,7 +887,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _createClass(DataService, [{
         key: "fetchData",
         value: function fetchData() {
-          return this.http.get('/');
+          return this.http.get('/dashboard');
         }
       }]);
 

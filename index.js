@@ -13,7 +13,7 @@ app.use(bodyParser.json());
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/', (req, res) => {
+app.get('/dashboard', (req, res) => {
     request('https://www.cbr-xml-daily.ru/daily_json.js', (err, response, body) => {
         if (err) {
             return res.status(500).send({ message: err });
